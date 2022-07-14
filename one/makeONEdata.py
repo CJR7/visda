@@ -21,16 +21,17 @@ def makesample(fileDir,picknumber):
 
 def maketrain(fileDir,liDir,sample):
     folderlist = os.listdir(fileDir)
-    for i in range(12):
+    for i in range(4):
+        renew(liDir+folderlist[i])
         a = sample[i]
         for name in a[0:1000]:
-            shutil.copy(fileDir+folderlist[i]+'/'+name, liDir+str(i)+name)
+            shutil.copy(fileDir+folderlist[i]+'/'+name, liDir+folderlist[i]+'/'+name)
            
     return
 
 def makelinear(fileDir,liDir,sample):
     folderlist = os.listdir(fileDir)
-    for i in range(12):
+    for i in range(4):
         os.makedirs(liDir+'train/'+folderlist[i])
         os.makedirs(liDir+'val/'+folderlist[i])
         a = sample[i]
